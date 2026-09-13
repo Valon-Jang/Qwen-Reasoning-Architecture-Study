@@ -1,5 +1,7 @@
 # Autonomous research checkpoint — 2026-09-13
 
+> **Latest continuation:** [Source and conflict architecture checkpoint](SOURCE_CONFLICT_CHECKPOINT_20260913.md). It records the user-accepted v0.2 structure, two further completed experiments, 138 cumulative actual model calls, and the next source-applicability gate. The original 76-call checkpoint below is preserved as historical evidence; use the linked checkpoint for the current research position.
+
 ## Current operating constraint
 The user will not run Qwen tests, launch commands, or paste test outputs. Research must obtain and operate its own authorized execution route. Smaller real Qwen instruments are allowed, but small-model evidence is not target-deployment or Qwen3.8-Max equivalence. This supersedes the old user-execution dependency; it does not erase Exp1–Exp5 or authorize paid resources/company-data export.
 
