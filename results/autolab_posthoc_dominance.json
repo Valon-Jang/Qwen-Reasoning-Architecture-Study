@@ -1,0 +1,19 @@
+{
+  "kind":"POSTHOC_MECHANISM_DIAGNOSTIC_NOT_MODEL_RERUN",
+  "source_run":34756584855,
+  "case":"P04",
+  "original_model_answer":{"selected":["A","F"],"time":6,"cost":20,"value":35},
+  "old_validator_errors":[],
+  "witness":{"selected":["A","G"],"time":6,"cost":17,"value":37,"value_gain":2,"cost_delta":-3,"time_delta":0},
+  "checked_neighbors":10,
+  "witness_independent_gold_pass":true,
+  "additional_model_calls":0,
+  "unit_tests_pass":7,
+  "exhaustive_feasible_candidates":105,
+  "certified_improvement_witnesses":93,
+  "suboptimal_candidates_not_detected_in_this_development_set":0,
+  "global_optimality_from_no_witness":"UNKNOWN",
+  "two_swap_counterexample_test":"PASS: no one-swap witness does not imply optimum",
+  "original_live_score_preserved":"2B hard screen 0/4",
+  "scope":"Fixed synthetic input mapping; fresh source-to-constraint fidelity, model-integrated repair and generalization not tested. This is not a live Qwen success or a held-out improvement."
+}
