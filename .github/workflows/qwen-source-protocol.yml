@@ -1,0 +1,38 @@
+name: Qwen source fidelity same-solver pilot
+on:
+  push:
+    paths:
+      - 'experiments/source_protocol_v1/**'
+      - '.github/workflows/qwen-source-protocol.yml'
+permissions:
+  contents: read
+concurrency:
+  group: qwen-source-protocol-v1
+  cancel-in-progress: false
+jobs:
+  source-fidelity:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify independent scorer and source adapter
+        run: python3 experiments/source_protocol_v1/study.py --self-test
+      - name: Execute real Qwen 2B and matched source interfaces
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python3 -u experiments/source_protocol_v1/study.py | tee source_protocol_console.log
+      - name: Preserve synthetic evidence only
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: qwen-source-protocol-${{ github.run_id }}
+          path: |
+            results/source_protocol_v1_live/
+            source_protocol_console.log
+          retention-days: 14
+          if-no-files-found: error
