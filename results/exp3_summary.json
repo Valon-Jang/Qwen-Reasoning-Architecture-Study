@@ -1,0 +1,30 @@
+{
+  "experiment": "EXP3_HARD_BARE_VS_HC",
+  "status": "COMPLETE",
+  "decision": "HC_REGRESSES",
+  "arms": {
+    "BARE": {
+      "case_pass": 16,
+      "case_runs": 16,
+      "hard_failures": 0,
+      "model_calls": 20,
+      "total_tokens": 54437,
+      "median_elapsed_ms": 45946,
+      "avg_calls_per_turn": 1.0
+    },
+    "HC_V3_3": {
+      "case_pass": 14,
+      "case_runs": 16,
+      "hard_failures": 2,
+      "model_calls": 25,
+      "total_tokens": 65335,
+      "median_elapsed_ms": 30463,
+      "avg_calls_per_turn": 1.25
+    }
+  },
+  "hc_hard_failure_cases": [
+    "HC11_STATE_REPLACEMENT_DECISION",
+    "HC13_REJECTED_HYPOTHESIS_REVIVAL"
+  ],
+  "interpretation": "Persistent compressed-state HC regressed versus Bare on hard multi-turn reasoning and must not be promoted as a general intelligence improvement."
+}
