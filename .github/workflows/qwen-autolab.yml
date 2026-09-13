@@ -1,0 +1,37 @@
+name: Qwen autonomous small-model pilot
+on:
+  push:
+    paths:
+      - 'experiments/autolab_v1/**'
+      - '.github/workflows/qwen-autolab.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: qwen-autolab-v1
+  cancel-in-progress: false
+jobs:
+  real-qwen-pilot:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate harness and independent scorer
+        run: python3 experiments/autolab_v1/run.py --self-test
+      - name: Run real Qwen weights, not a mock
+        run: |
+          set -o pipefail
+          python3 -u experiments/autolab_v1/run.py --out results/autolab_v1_live | tee autolab_console.log
+      - name: Preserve evidence, never weights or credentials
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qwen-autolab-v1-${{ github.run_id }}
+          path: |
+            results/autolab_v1_live/
+            autolab_console.log
+          retention-days: 7
+          if-no-files-found: warn
