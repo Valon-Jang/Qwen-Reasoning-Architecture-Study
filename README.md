@@ -2,6 +2,8 @@
 
 Controlled experiments on reasoning guidance, persistent state, deterministic verification, and minimal reasoning architecture for Qwen 3.5-33B.
 
+> Before interpreting the results, read **[Research Scope, Premises, Rationale, and Limitations](docs/RESEARCH_SCOPE_AND_LIMITATIONS.md)**. It defines why the experiments were run, what BARE means, the deployment and benchmark assumptions, the known confounds, and the claims these results do **not** support.
+
 ## Current conclusion
 
 The strongest default architecture observed so far is the simplest one:
@@ -126,6 +128,7 @@ This is a shift from **always-on reasoning augmentation** toward **failure-trigg
 ```text
 README.md
 ├─ docs/
+│  ├─ RESEARCH_SCOPE_AND_LIMITATIONS.md
 │  ├─ EXPERIMENT_TIMELINE.md
 │  ├─ EXP1_STATE_LIFECYCLE.md
 │  ├─ EXP2_OUTPUT_CONSISTENCY.md
@@ -144,3 +147,5 @@ README.md
 ## Research boundary
 
 These results apply to the tested Qwen 3.5-33B deployment, prompts, harnesses, and benchmark cases. They do not establish a general law about all Qwen models, all reasoning prompts, or all agent systems.
+
+For the full methodological boundary, including small sample size, targeted benchmark design, internal deployment effects, limited stochastic replication, transport/token accounting limits, MAX confounding, semantic/format separation, and incomplete external reproducibility, see **[RESEARCH_SCOPE_AND_LIMITATIONS.md](docs/RESEARCH_SCOPE_AND_LIMITATIONS.md)**.
