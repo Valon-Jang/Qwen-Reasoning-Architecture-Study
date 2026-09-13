@@ -1,30 +1,83 @@
 {
   "experiment": "EXP3_HARD_BARE_VS_HC",
-  "status": "COMPLETE",
-  "decision": "HC_REGRESSES",
+  "status": "COMPLETE_POSTHOC_DECISION_FORMAT_AUDITED",
+  "decision": "SEMANTIC_TIE_CONTRACT_REGRESSION_NOT_PROMOTED",
+  "historical_decision": "HC_REGRESSES",
+  "legacy_metric_definitions": {
+    "case_pass": "Original contract-inclusive case score, preserved unchanged.",
+    "hard_failures": "Original scorer failed-case count, not semantic failure count.",
+    "median_elapsed_ms": "Historical descriptive aggregate only; not causal speed evidence.",
+    "semantic_pass": "Post-hoc logged-gold decision correctness with enumerated auxiliary key checks; not every prose statement or hidden state.",
+    "format_pass_turns": "Presence of the required FINAL marker; not a newly recovered complete output specification."
+  },
   "arms": {
     "BARE": {
       "case_pass": 16,
       "case_runs": 16,
       "hard_failures": 0,
       "model_calls": 20,
+      "prompt_tokens": 2748,
+      "completion_tokens": 51689,
       "total_tokens": 54437,
       "median_elapsed_ms": 45946,
-      "avg_calls_per_turn": 1.0
+      "avg_calls_per_turn": 1.0,
+      "turn_runs": 20,
+      "semantic_pass": 16,
+      "semantic_pass_turns": 20,
+      "semantic_unknown_turns": 0,
+      "format_pass_turns": 20,
+      "format_failure_turns": 0,
+      "observed_target_semantic_failures": 0
     },
     "HC_V3_3": {
       "case_pass": 14,
       "case_runs": 16,
       "hard_failures": 2,
       "model_calls": 25,
+      "prompt_tokens": 18792,
+      "completion_tokens": 46543,
       "total_tokens": 65335,
       "median_elapsed_ms": 30463,
-      "avg_calls_per_turn": 1.25
+      "avg_calls_per_turn": 1.25,
+      "turn_runs": 20,
+      "semantic_pass": 16,
+      "semantic_pass_turns": 20,
+      "semantic_unknown_turns": 0,
+      "format_pass_turns": 17,
+      "format_failure_turns": 3,
+      "observed_target_semantic_failures": 0
     }
   },
   "hc_hard_failure_cases": [
     "HC11_STATE_REPLACEMENT_DECISION",
     "HC13_REJECTED_HYPOTHESIS_REVIVAL"
   ],
-  "interpretation": "Persistent compressed-state HC regressed versus Bare on hard multi-turn reasoning and must not be promoted as a general intelligence improvement."
+  "reclassified_turns": [
+    {"case_id":"HC11_STATE_REPLACEMENT_DECISION","turn":2,"gold":"S","logged_got":"","semantic_pass":true,"format_pass":false,"failure_class":"FINAL_MARKER_OMITTED"},
+    {"case_id":"HC13_REJECTED_HYPOTHESIS_REVIVAL","turn":1,"gold":"REJECT_A","logged_got":"","semantic_pass":true,"format_pass":false,"failure_class":"FINAL_MARKER_OMITTED"},
+    {"case_id":"HC13_REJECTED_HYPOTHESIS_REVIVAL","turn":2,"gold":"REVIVE_A","logged_got":"","semantic_pass":true,"format_pass":false,"failure_class":"FINAL_MARKER_OMITTED"}
+  ],
+  "interpretation": "The supplied original-result capture supports a 16/16 vs 16/16 target-decision semantic tie. HC's three FINAL-marker omissions across two cases preserve its original 14/16 contract-inclusive result. The dependency-loss/state-replacement reasoning-failure explanation is withdrawn. The HC bundle is not promoted because no semantic gain is demonstrated, contract reliability is worse in this run, and calls/aggregate tokens are higher.",
+  "superseded_interpretation": "Persistent compressed-state HC regressed versus Bare on hard multi-turn reasoning and must not be promoted as a general intelligence improvement.",
+  "audit": {
+    "date": "2026-09-13",
+    "kind": "POSTHOC_LOG_DECISION_ADJUDICATION_NOT_MODEL_RERUN",
+    "source_sha256": "71228cab3ccafb4d49f7388804cb19d2c55c4b0cbb508a75074b9e3587966cc5",
+    "source_bytes": 28195,
+    "case_arm_records": 32,
+    "turn_records": 40,
+    "explicit_FINAL_decisions": 37,
+    "manual_prose_adjudications": 3,
+    "audit_extractor_saved_got_matches": 40,
+    "audit_key_checks_saved_turn_pass_matches": 40,
+    "historical_full_scorer_verified": false,
+    "historical_execution_hash_verified": false,
+    "full_prose_factuality_audited": false,
+    "hidden_state_fidelity_audited": false,
+    "new_model_calls": 0,
+    "details": "docs/EXP3_BARE_VS_HC.md"
+  },
+  "cross_experiment_contract_signal": "Exp3 and the separately reported Exp5 show same-direction contract-risk observations under different bundled treatments. Not same-treatment replication, not a universal causal law, and not proof of the only replicated portfolio effect. Counting units must not be pooled.",
+  "token_boundary": "No separate reasoning-token accounting or per-call breakdown of the five extra HC calls is available. Completion counts do not identify internal thinking or prove a scaffolding-for-reasoning exchange.",
+  "input_boundary": "HC11 prompt-token growth is consistent with the later FIX1 state-plus-new-message builder, but counts alone do not identify exact historical request payloads."
 }
