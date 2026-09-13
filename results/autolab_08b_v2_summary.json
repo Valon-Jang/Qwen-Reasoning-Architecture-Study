@@ -1,0 +1,30 @@
+{
+  "experiment": "Q35_SMALL_REAL_FEEDBACK_UQ8_V2",
+  "status": "DEVELOPMENT_PILOT_COMPLETE",
+  "run_id": 34755662225,
+  "job_id": 103719482117,
+  "commit": "b6385f10a514fd008760620a233ff4dc4c0b010c",
+  "model": "Qwen/Qwen3.5-0.8B",
+  "quantization_source": "unsloth/Qwen3.5-0.8B-GGUF",
+  "weights_sha256": "0ad885ffd4bb022fc4f0d33a3308fa108ef8613159d3b3a67e23abca056b7a6c",
+  "weights_bytes": 811843840,
+  "runtime": "llama.cpp b10344 CPU, 4 threads",
+  "thinking": false,
+  "temperature": 0.6,
+  "actual_completed_model_calls": 36,
+  "actual_total_tokens": 16152,
+  "research_elapsed_ms": 193003.41,
+  "errors": [],
+  "arms": {
+    "BARE": {"case_runs":12,"semantic_pass":0,"format_pass":11,"case_pass":0,"unscorable":0,"logical_calls":12,"logical_tokens":4703,"median_case_ms":4297.525},
+    "SELF_REVIEW": {"case_runs":12,"semantic_pass":0,"format_pass":10,"case_pass":0,"unscorable":1,"logical_calls":24,"logical_tokens":10235,"median_case_ms":9079.33},
+    "VERIFIED_REPAIR": {"case_runs":12,"semantic_pass":0,"format_pass":10,"case_pass":0,"unscorable":1,"logical_calls":24,"logical_tokens":10620,"median_case_ms":9397.36}
+  },
+  "all_initial_responses_triggered_validator": true,
+  "posthoc_local_score_recomputation": "36/36 identical to saved raw-output scores",
+  "evidence_artifact_id": 10317486601,
+  "evidence_zip_sha256": "be9bd5b9c1f41427cf11c20b47295772d891cb64e7b07968999b286d5ceb3f53",
+  "manual_user_test_steps": 0,
+  "promotion": "NOT_PROMOTED_FLOOR_EFFECT",
+  "scope": "One 0.8B quantization, one seed/sample per task, 12 synthetic development cases, no company deployment or Max reference measurement. Recovery arms share their initial samples and are not independent samples. A zero observed semantic pass plus one unscorable is not proof that all 12 semantic answers are false."
+}

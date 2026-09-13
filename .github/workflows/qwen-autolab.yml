@@ -20,13 +20,15 @@ jobs:
         with:
           persist-credentials: false
       - name: Validate harness and independent scorer
-        run: python3 experiments/autolab_v1/run.py --self-test
-      - name: Run real Qwen weights, not a mock
+        run: |
+          python3 experiments/autolab_v1/run.py --self-test
+          python3 experiments/autolab_v1/calibrate.py --self-test
+      - name: Real Qwen calibration and paired representation test
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -o pipefail
-          python3 -u experiments/autolab_v1/launch_uq8.py | tee autolab_console.log
+          python3 -u experiments/autolab_v1/calibrate.py | tee autolab_console.log
       - name: Preserve evidence, never weights or credentials
         if: always()
         uses: actions/upload-artifact@v4
