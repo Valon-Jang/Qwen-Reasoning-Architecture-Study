@@ -1,0 +1,40 @@
+name: Qwen conflict-only source follow-up
+on:
+  push:
+    paths:
+      - 'experiments/conflict_protocol_v1/**'
+      - '.github/workflows/qwen-conflict-protocol.yml'
+permissions:
+  contents: read
+concurrency:
+  group: qwen-conflict-protocol-v1
+  cancel-in-progress: false
+jobs:
+  conflict-choice:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify closed-domain compiler
+        run: |
+          python3 experiments/posthoc/conflict_only_candidate.py
+          python3 -m py_compile experiments/conflict_protocol_v1/study.py
+      - name: Real Qwen choices on conflicting records only
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python3 -u experiments/conflict_protocol_v1/study.py | tee conflict_protocol_console.log
+      - name: Preserve synthetic evidence only
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: qwen-conflict-protocol-${{ github.run_id }}
+          path: |
+            results/conflict_protocol_v1_live/
+            conflict_protocol_console.log
+          retention-days: 14
+          if-no-files-found: error
