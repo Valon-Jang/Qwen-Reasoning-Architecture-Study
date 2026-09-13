@@ -1,0 +1,25 @@
+{
+  "experiment":"Q35_08B_CALIBRATION_REPRESENTATION_V1",
+  "run_id":34756276184,
+  "commit":"918bebcb6059e4636c7eb1b96f336b390fc09b33",
+  "status":"COMPLETE",
+  "actual_completed_model_calls":28,
+  "known_total_tokens":8025,
+  "research_elapsed_ms":61642.7,
+  "health_semantic_pass":2,
+  "health_runs":4,
+  "health_format_pass":4,
+  "health_answers":{"echo_en":"CHECK_7429","add_en":11,"add_ko":14,"max_two":"A"},
+  "health_expected":{"echo_en":"CHECK_7429","add_en":11,"add_ko":11,"max_two":"B"},
+  "arms":{
+    "RAW_JSON_BASELINE":{"cases":12,"semantic_pass":0,"format_pass":11,"case_pass":0,"unscorable":0,"tokens":4703,"median_ms":2363.35},
+    "CONCRETE_TEXT":{"cases":12,"semantic_pass":0,"format_pass":11,"case_pass":0,"unscorable":0,"tokens":3063,"median_ms":1592.53}
+  },
+  "artifact_id":10316853120,
+  "artifact_sha256":"305fbaa13974c978afd7555f8c46d7e459d294f95d5eaf7d7687531fb3285fa8",
+  "local_raw_score_recomputation":"24/24 MATCH",
+  "conclusion":"Representation reduced measured tokens but did not escape the quality floor. Basic controls also failed; do not treat this instrument as an adequate target-deployment proxy. Model, quantization, serving and prompting causes remain unresolved.",
+  "decision":"QUALIFY_A_LARGER_INSTRUMENT_BEFORE_ARCHITECTURE_COMPARISON",
+  "scope":"0.8B Q8 CPU non-thinking, development cases; not held-out, statistical superiority or Max-like achievement",
+  "manual_user_test_steps":0
+}
