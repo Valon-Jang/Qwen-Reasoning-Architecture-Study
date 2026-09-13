@@ -1,0 +1,35 @@
+{
+  "benchmark": "Q35_DIRECT_RC1_HELDOUT_8_V1",
+  "repeats": 2,
+  "complete": true,
+  "decision": "MAX_REGRESSION_DO_NOT_PROMOTE",
+  "arms": {
+    "BARE": {
+      "case_runs": 16,
+      "case_pass": 16,
+      "format_failures": 0,
+      "model_calls": 22,
+      "total_tokens": 37178,
+      "median_case_elapsed_ms": 9234.5
+    },
+    "GUIDE": {
+      "case_runs": 16,
+      "case_pass": 15,
+      "format_failures": 1,
+      "model_calls": 22,
+      "total_tokens": 43831,
+      "median_case_elapsed_ms": 14511.5
+    },
+    "MAX": {
+      "case_runs": 16,
+      "case_pass": 11,
+      "format_failures": 7,
+      "model_calls": 22,
+      "total_tokens": 71582,
+      "median_case_elapsed_ms": 34419.5
+    }
+  },
+  "model_intelligence_claim": "NOT_ESTABLISHED",
+  "unknown_or_failed_requests": [],
+  "interpretation_boundary": "MAX is a GUIDE + Korean style + AUTO-effort prompt bundle, not a clean high-reasoning-only arm. case_pass also includes format compliance, so semantic correctness and format compliance must be separated in future experiments."
+}
