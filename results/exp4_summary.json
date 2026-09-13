@@ -1,0 +1,38 @@
+{
+  "experiment": "EXP4_SUBTRACTIVE_ABLATION",
+  "status": "COMPLETE",
+  "case_count_per_arm": 12,
+  "arms": {
+    "BARE": {
+      "case_pass": 11,
+      "hard_failures": 1,
+      "model_calls": 18,
+      "total_tokens": 54927,
+      "median_elapsed_ms": 36368,
+      "avg_calls_per_turn": 1.0,
+      "patches": 0,
+      "corrections": 0
+    },
+    "GUIDE": {
+      "case_pass": 12,
+      "hard_failures": 0,
+      "model_calls": 18,
+      "total_tokens": 51576,
+      "median_elapsed_ms": 28135,
+      "avg_calls_per_turn": 1.0,
+      "patches": 0,
+      "corrections": 0
+    },
+    "LITE": {
+      "case_pass": 12,
+      "hard_failures": 0,
+      "model_calls": 18,
+      "total_tokens": 46927,
+      "median_elapsed_ms": 39797,
+      "avg_calls_per_turn": 1.0,
+      "patches": 0,
+      "corrections": 0
+    }
+  },
+  "interpretation_at_completion": "GUIDE was the minimal winner candidate. LITE matched quality but its deterministic verifier never activated, so no additional verifier quality benefit was observed. Held-out confirmation was required before promotion."
+}
