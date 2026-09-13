@@ -1,0 +1,36 @@
+{
+  "experiment": "Q35_2B_SOURCE_FIDELITY_SAME_SOLVER_V1",
+  "run_id": 34758271938,
+  "job_id": 103726378504,
+  "commit": "c6853c15662b6bec30091d8657fa7bab3a5c27cf",
+  "status": "COMPLETE",
+  "model": "Qwen3.5-2B Unsloth Q8_0, llama.cpp b10344, CPU 4 threads, thinking=false",
+  "actual_model_calls_completed": 52,
+  "study_calls": 48,
+  "canary_calls": 4,
+  "canary_pass": 4,
+  "known_physical_tokens": 16988,
+  "research_elapsed_ms": 526232.82,
+  "errors": [],
+  "arms": {
+    "DIRECT": {"n":16,"semantic_pass":2,"format_pass":16,"case_pass":2,"source_fidelity_pass":null,"unscorable":0,"model_calls":16,"prompt_tokens":4058,"completion_tokens":323,"total_tokens":4381,"median_ms":7045.65555},
+    "VALUE_TOOL": {"n":16,"semantic_pass":1,"format_pass":7,"case_pass":1,"source_fidelity_pass":0,"unscorable":9,"wrong_spec_right_answer":1,"model_calls":16,"prompt_tokens":5258,"completion_tokens":1472,"total_tokens":6730,"median_ms":10704.8687},
+    "REF_TOOL": {"n":16,"semantic_pass":6,"format_pass":7,"case_pass":6,"source_fidelity_pass":6,"unscorable":9,"wrong_spec_right_answer":0,"model_calls":16,"prompt_tokens":4954,"completion_tokens":668,"total_tokens":5622,"median_ms":9453.0531}
+  },
+  "primary_pair_case_pass": {"ref_wins":6,"value_wins":1,"ties":9},
+  "no_model_all_rows_control": {"distinct_sources":8,"correct":5,"conflict_blocked":3,"model_calls":0},
+  "exact_spec_solver_positive_control": {"n":8,"pass":8,"not_model_trials":true},
+  "observations": [
+    "REF_TOOL copied rule IDs into item_refs in both S01 and S07 repeats: 4 WRONG_REFERENCE_KIND failures.",
+    "REF_TOOL kept old and new item rows together on S03/S05: 4 DUPLICATE_ITEM failures.",
+    "S04 REF_TOOL retained the old limit once and both limits once.",
+    "VALUE_TOOL S04 repeat 1 got the right answer but invented an extra E item. Full source fidelity remained false."
+  ],
+  "raw_response_replay": "48/48 MATCH, all scorable outputs also matched separately specified hand-calculated gold",
+  "request_hash_recheck": "48/48 MATCH",
+  "artifact_id": 10318495777,
+  "artifact_sha256": "970b55fca4e51717fdc72ef0e78891953fba1a132b73ddbca6597bbc374d1a79",
+  "manual_user_test_steps":0,
+  "promotion":"NOT_PROMOTED",
+  "scope":"Eight constructed sources, two seeds each; four Korean narratives use English record grammar. Same-solver comparison isolates interface/work division, not intrinsic intelligence. Tool-input failures are not all pure JSON-syntax failures. No company deployment or Max-reference measurement."
+}
